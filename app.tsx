@@ -3,6 +3,7 @@ declare var require: any
 var React = require('react');
 var ReactDOM = require('react-dom');
 //var logo = require('logo.svg');
+//var Server = require('./server.js');
 
 export class App extends React.Component {
     constructor(props) {
@@ -11,23 +12,22 @@ export class App extends React.Component {
     render() {
         return (
             <div>
-                <Footer siteName={this.props.siteName} siteURL={this.props.siteURL} />
+                <Header siteName={this.props.siteName} siteURL={this.props.siteURL} />
                 <Post />
+                <Products />
             </div>
         );
     }
 }
 
-export class Footer extends React.Component {
+export class Header extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        const list = [];
-        for (let i = 0; i < this.props.siteName.length; i++)
-            list.push(<Site siteName={this.props.siteName[i]} siteURL={this.props.siteURL[0]} />);
+        const list = this.props.siteName.map((sitename, i) => <Site key={sitename} siteName={sitename} siteURL={this.props.siteURL[i]} />);
         return (
-            <div className="footer" id="footer">
+            <div className="header" id="header">
                 {list}
             </div>
 
@@ -41,18 +41,34 @@ export class Site extends React.Component {
     }
     render() {
         return (
-            <input type="button" className="footer-button" value={this.props.siteName} data-url={this.props.siteURL} />
+            <input type="button" className="header-button" value={this.props.siteName} data-url={this.props.siteURL} />
         );
     }
 }
 
 export class Post extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+    
+    handleSubmit(event) {
+        alert('Отправленное имя: ' + this.state.value);
+        event.preventDefault();
+    }
 
     render() {
         return (
-            <div>
-                <form method="post" action="/app/calc" onSubmit="">
-                    <input type="text" name="first_name" value="Введите имя" onClick={this.value = ''} />
+            <div className="name" onSubmit={this.handleSubmit} >
+                <form method="post" action="/app/calc" >
+                    <input type="text" name="first_name" value={this.state.value} onChange={this.handleChange} />
                     <input type="submit" value="Отправить" />
                 </form>
             </div>
@@ -60,7 +76,43 @@ export class Post extends React.Component {
     }
 }
 
+export class Products extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        const images=[];
+        for (let i=0; i< 10; i++)
+        {
+            images.push(<td><img src="/*.png" /></td>);
+            
+        }
+        return (
+            //<div className="images"></div>
+             
+            <div className="images">
+           <table >
+                <thead></thead>
+                <tbody>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                    <tr>{images}</tr>
+                </tbody>                
+            </table>
+            </div>
+             
+        );
+    }
+}
+
 
 const siteName = ["Anison", "DTF", "empty", "3DNEWS", "Twitch"];
-const siteURL = ["https://anison.fm"];
+const siteURL = ["https://anison.fm", "https://dtf.ru", "#", "https://3dnews.ru", "https://twitch.tv"];
 ReactDOM.render(<App siteName={siteName} siteURL={siteURL} />, document.getElementById('root'));
