@@ -28,6 +28,7 @@ var server = app.listen(app.get('port'), function () {
         });
         console.log('adding images');
     });
+    var imagesfromserver = images;
 //module.exports.images = images;
 
 function getRandomInt(min, max) {
@@ -36,8 +37,8 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
   }
 
-var i = 0;
-app.get("/*.png", (req, res) => {
+
+app.get("/images/image*.png", (req, res) => {
     res.sendFile(path.join(__dirname, images[getRandomInt(0,100)]));
-    i++;
+    
   });
