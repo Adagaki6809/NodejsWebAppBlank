@@ -186,24 +186,16 @@ var Products = /** @class */ (function (_super) {
     }
     Products.prototype.render = function () {
         var images = [];
-        for (var i = 0; i < 5; i++) {
+        for (var i = 1; i <= 20; i++) {
             images.push(React.createElement("td", null,
-                React.createElement("img", { src: "/images/image" + i + ".png" })));
+                React.createElement("img", { src: "/images/" + i.toString() + ".jpeg" })));
         }
-        return (React.createElement("div", { className: "images" })
-        /*
-        <div className="images">
-            <table>
-                <thead></thead>
-                <tbody>
-                    <tr>
-                        {images}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        */
-        );
+        return (React.createElement("div", { className: "images" },
+            React.createElement("table", null,
+                React.createElement("thead", null),
+                React.createElement("tbody", null,
+                    React.createElement("tr", null, images.filter(function (item, i) { return i <= 9; })),
+                    React.createElement("tr", null, images.filter(function (item, i) { return i > 9; }))))));
     };
     return Products;
 }(React.Component));

@@ -21,14 +21,16 @@ var server = app.listen(app.get('port'), function () {
 });
 
     const testFolder = './images/';  
-    var images = [];
+    var images = {};
+    var imagesHTML = "";
     fs.readdir(testFolder, (err, files) => {
         files.forEach((file) => {
-            images.push(testFolder + file);
+            images[file] = (testFolder + file);
+            imagesHTML += "<img src='" + file + "' />";
         });
         console.log('adding images');
     });
-    var imagesfromserver = images;
+    
 //module.exports.images = images;
 
 function getRandomInt(min, max) {
@@ -38,7 +40,9 @@ function getRandomInt(min, max) {
   }
 
 
-app.get("/images/image*.png", (req, res) => {
-    res.sendFile(path.join(__dirname, images[getRandomInt(0,100)]));
+app.get("/images/:image_id", (req, res) => {
+    //res.writeHead(200, {'Content-type':'text/html'});
+    //res.end(imagesHTML);
+    res.sendFile(path.join(__dirname, images[req.params.image_id]));
     
   });

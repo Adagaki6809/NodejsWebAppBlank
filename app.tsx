@@ -86,25 +86,21 @@ export class Products extends React.Component {
     render() {
         const images=[];
 
-        for (var i=0; i<5; i++)
+        for (let i=1; i<=20; i++)
         {
-            images.push(<td><img src={`/images/image${i}.png`} /></td>)
+            images.push(<td><img src={"/images/" + i.toString() + ".jpeg"} /></td>)
         }
 
         return (
-            <div className="images"></div>
-            /*
             <div className="images"> 
                 <table>
                     <thead></thead>
                     <tbody>
-                        <tr>
-                            {images}
-                        </tr>
+                        <tr>{images.filter(function(item, i) {  return i <= 9;})}</tr>
+                        <tr>{images.filter(function(item, i) {  return i > 9;})}</tr>
                     </tbody>
                 </table>
-            </div>  
-            */ 
+            </div>
         );
     }
 }
