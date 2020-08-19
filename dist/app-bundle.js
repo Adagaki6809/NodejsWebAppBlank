@@ -135,7 +135,7 @@ var Header = /** @class */ (function (_super) {
     }
     Header.prototype.render = function () {
         var _this = this;
-        var list = this.props.siteName.map(function (sitename, i) { return React.createElement(Site, { key: sitename, siteName: "", siteURL: _this.props.siteURL[i] }); });
+        var list = this.props.siteName.map(function (sitename, i) { return React.createElement(Site, { key: sitename, siteName: sitename, siteURL: _this.props.siteURL[i] }); });
         return (React.createElement("div", { className: "header", id: "header" }, list));
     };
     return Header;
@@ -162,6 +162,8 @@ var Post = /** @class */ (function (_super) {
         return _this;
     }
     Post.prototype.handleChange = function (event) {
+        //for (let i = 0; i < event.target.files.length; i++)
+        //console.log(event.target.files[i].name);
         this.setState({ value: event.target.value });
     };
     Post.prototype.handleSubmit = function (event) {
@@ -170,7 +172,7 @@ var Post = /** @class */ (function (_super) {
     };
     Post.prototype.render = function () {
         return (React.createElement("div", { className: "name", onSubmit: this.handleSubmit },
-            React.createElement("form", { method: "post", action: "/app/calc" },
+            React.createElement("form", { method: "post", action: "#" },
                 React.createElement("input", { type: "text", name: "first_name", value: this.state.value, onChange: this.handleChange }),
                 React.createElement("input", { type: "submit", value: "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C" }))));
     };

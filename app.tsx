@@ -56,6 +56,9 @@ export class Post extends React.Component {
     }
     
     handleChange(event) {
+        //for (let i = 0; i < event.target.files.length; i++)
+            //console.log(event.target.files[i].name);
+            
         this.setState({value: event.target.value});
     }
     
@@ -67,7 +70,7 @@ export class Post extends React.Component {
     render() {
         return (
             <div className="name" onSubmit={this.handleSubmit} >
-                <form method="post" action="/app/calc" >
+                <form method="post" action="#" >
                     <input type="text" name="first_name" value={this.state.value} onChange={this.handleChange} />
                     <input type="submit" value="Отправить" />
                 </form>
