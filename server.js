@@ -41,6 +41,7 @@ router.get('/images/:image_id', (req, res) => {
 });
 
 router.post('/test', (req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
     res.end("Сервер отвечает:\n\tВведённое имя - " + req.body.first_name);
 });
 
