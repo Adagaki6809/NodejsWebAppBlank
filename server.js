@@ -43,7 +43,7 @@ router.get('/images/:image_id', (req, res) => {
 router.post('/test', (req, res) => {
     var name = "Сервер отвечает:\n\tВведённое имя - " + req.body.first_name;
     res.sendFile("test.html");
-    //res.end("Сервер отвечает:\n\tВведённое имя - " + req.body.first_name);
+    res.end("Сервер отвечает");
 });
 
 app.use('/', router);
