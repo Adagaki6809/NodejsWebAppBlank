@@ -26,7 +26,7 @@ var server = app.listen(app.get('port'), function () {
     fs.readdir(testFolder, (err, files) => {
         files.forEach((file) => {
             images[file] = (testFolder + file);
-            imagesHTML += "<img src='" + file + "' />";
+            //imagesHTML += "<img src='" + file + "' />";
         });
         console.log('adding images');
     });
