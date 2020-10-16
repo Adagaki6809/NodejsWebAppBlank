@@ -45,30 +45,19 @@ div {
             background-color: #212222;
             opacity: 0.8;
         }
-
-table {
-    height: 20%;
-    width: 100%;
-    border: 1px solid black;
-        }
-tr {
-    height: 10%;
-    width: 100%;
-    border: 1px solid black;
-    
-}        
-td {
-    height: 100%;
-    width: 10%;
-    max-width: 160px;
-    
-}    
 img {
-    height: 10%;
+    width: 100%;
+    height: -webkit-fill-available;
+    object-fit: cover;
 }
 .name {
     height:10%;
 }
 .images {
-    height:80%;
+    height: 40%;
+}
+
+.images-row {
+    display: flex;
+    width: 10%;
 }
