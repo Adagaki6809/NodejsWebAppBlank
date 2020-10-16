@@ -43,7 +43,7 @@ router.get("/images/:image_id", (req, res) => {
 router.post("/test", (req, res) => {
     var name=req.body.first_name;
     console.log(name);
-    res.end("SUCCES")
+    res.end(name);
 });
 
 app.use("/", router);
