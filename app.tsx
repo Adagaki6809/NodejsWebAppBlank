@@ -70,7 +70,7 @@ export class Post extends React.Component {
     render() {
         return (
             <div className="name" onSubmit={this.handleSubmit} >
-                <form method="post" action="#" >
+                <form method="post" action="/test" >
                     <input type="text" name="first_name" value={this.state.value} onChange={this.handleChange} />
                     <input type="submit" value="Отправить" />
                 </form>
