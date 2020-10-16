@@ -93,13 +93,8 @@ export class Products extends React.Component {
 
         return (
             <div className="images"> 
-                <table>
-                    <thead></thead>
-                    <tbody>
-                        <tr>{images.filter(function(item, i) {  return i <= 9;})}</tr>
-                        <tr>{images.filter(function(item, i) {  return i > 9;})}</tr>
-                    </tbody>
-                </table>
+		<span className="images-row"> {images.filter(function(item, i) {  return i <= 9;})} </span>
+                <span className="images-row"> {images.filter(function(item, i) {  return i > 9;})} </span>
             </div>
         );
     }
