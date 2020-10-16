@@ -63,8 +63,8 @@ export class Post extends React.Component {
     }
     
     handleSubmit(event) {
-        alert('Отправленное имя: ' + this.state.value);
-        event.preventDefault();
+        //alert('Отправленное имя: ' + this.state.value);
+        //event.preventDefault();
     }
 
     render() {
