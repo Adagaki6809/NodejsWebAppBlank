@@ -33,17 +33,17 @@ function getRandomInt(min, max) {
 }
 
 router.get('/',(req, res) => {
-  res.sendfile("index.html");
+  res.sendFile("index.html");
 });
 
-router.get("/images/:image_id", (req, res) => {
+router.get('/images/:image_id', (req, res) => {
     res.sendFile(path.join(__dirname, images[req.params.image_id]));
 });
 
-router.post("/test", (req, res) => {
-    var name=req.body.first_name;
-    console.log(name);
-    res.end(name);
+router.post('/test', (req, res) => {
+    var name = "Сервер отвечает:\n\tВведённое имя - " + req.body.first_name;
+    res.sendFile("test.html");
+    //res.end("Сервер отвечает:\n\tВведённое имя - " + req.body.first_name);
 });
 
-app.use("/", router);
+app.use('/', router);
