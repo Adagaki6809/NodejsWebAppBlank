@@ -88,7 +88,7 @@ export class Products extends React.Component {
 
         for (let i=1; i<=20; i++)
         {
-            images.push(<img src={"/images/" + i.toString() + ".jpeg"} />)
+            images.push(<img key={i} src={"/images/" + i.toString() + ".jpeg"} />)
         }
 
         return (
