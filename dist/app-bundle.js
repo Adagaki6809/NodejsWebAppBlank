@@ -167,12 +167,12 @@ var Post = /** @class */ (function (_super) {
         this.setState({ value: event.target.value });
     };
     Post.prototype.handleSubmit = function (event) {
-        alert('Отправленное имя: ' + this.state.value);
-        event.preventDefault();
+        //alert('Отправленное имя: ' + this.state.value);
+        //event.preventDefault();
     };
     Post.prototype.render = function () {
         return (React.createElement("div", { className: "name", onSubmit: this.handleSubmit },
-            React.createElement("form", { method: "post", action: "#" },
+            React.createElement("form", { method: "post", action: "/test" },
                 React.createElement("input", { type: "text", name: "first_name", value: this.state.value, onChange: this.handleChange }),
                 React.createElement("input", { type: "submit", value: "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C" }))));
     };
@@ -187,15 +187,17 @@ var Products = /** @class */ (function (_super) {
     Products.prototype.render = function () {
         var images = [];
         for (var i = 1; i <= 20; i++) {
-            images.push(React.createElement("td", null,
-                React.createElement("img", { src: "/images/" + i.toString() + ".jpeg" })));
+            images.push(React.createElement("img", { key: i, src: "/images/" + i.toString() + ".jpeg" }));
         }
         return (React.createElement("div", { className: "images" },
-            React.createElement("table", null,
-                React.createElement("thead", null),
-                React.createElement("tbody", null,
-                    React.createElement("tr", null, images.filter(function (item, i) { return i <= 9; })),
-                    React.createElement("tr", null, images.filter(function (item, i) { return i > 9; }))))));
+            React.createElement("div", { className: "images-row" },
+                " ",
+                images.filter(function (item, i) { return i <= 9; }),
+                " "),
+            React.createElement("div", { className: "images-row" },
+                " ",
+                images.filter(function (item, i) { return i > 9; }),
+                " ")));
     };
     return Products;
 }(React.Component));

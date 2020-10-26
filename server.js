@@ -1,6 +1,7 @@
 'use strict';
 var path = require('path');
 var express = require('express');
+var favicon = require('serve-favicon');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 const router = express.Router();
@@ -25,19 +26,13 @@ fs.readdir(testFolder, (err, files) => {
 	images[file] = (testFolder + file);
     });
 });
-    
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
-}
 
 router.get('/',(req, res) => {
-  res.sendFile("index.html");
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 router.get('/favicon.ico',(req, res) => {
-  res.sendFile("favicon.ico");
+    res.sendFile(favicon(path.join(__dirname, 'favicon.ico')));
 });
 
 router.get('/images/:image_id', (req, res) => {
@@ -46,7 +41,7 @@ router.get('/images/:image_id', (req, res) => {
 
 router.post('/test', (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
-    res.end("Сервер отвечает:\n\tВведённое имя - " + req.body.first_name);
+    res.end('Сервер отвечает:\n\tВведённое имя - ' + req.body.first_name);
 });
 
 app.use('/', router);
