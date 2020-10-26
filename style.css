@@ -54,9 +54,9 @@ img {
     height:10%;
 }
 .images {
-    height: 40%;
+    display: grid;
+    height: 84%;
 }
-
 .images-row {
     display: flex;
     width: 10%;

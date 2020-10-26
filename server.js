@@ -36,6 +36,10 @@ router.get('/',(req, res) => {
   res.sendFile("index.html");
 });
 
+router.get('/favicon.ico',(req, res) => {
+  res.sendFile("favicon.ico");
+});
+
 router.get('/images/:image_id', (req, res) => {
     res.sendFile(path.join(__dirname, images[req.params.image_id]));
 });
