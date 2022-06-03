@@ -1,0 +1,2 @@
+D:\Programs\NodejsWebAppBlank\NodejsWebAppBlank\obj\Debug\NodejsWebAppBlank.njsprojAssemblyReference.cache
+D:\Programs\NodejsWebAppBlank\NodejsWebAppBlank\bin\Microsoft.NodejsTools.WebRole.dll
